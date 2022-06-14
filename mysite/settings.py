@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r=^h_in)_rquufz_foqytg&t6$uxa+2i_o((hjyu1-a0=b&#af'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['technocy.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'userAuthentication',
     'rest_framework',
     "corsheaders",
     'rest_framework.authtoken',
@@ -76,6 +77,15 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
+REST_FRAMEWORK = {
+   
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+   
+}
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -83,11 +93,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # 'NAME': 'technocy$technocy',
-        'NAME':'technocy$default',
-        'USER': 'technocy',
-        'PASSWORD': 'michealandrew',
-        'HOST': 'technocy.mysql.pythonanywhere-services.com',
-
+        'NAME':'technocy',
+        'USER': 'micheal',
+        'PASSWORD': 'figodelima',
+       'HOST': 'localhost',
+        'PORT': '3306',
             'OPTIONS': {
             'sql_mode': 'traditional',
         }
@@ -134,16 +144,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
 
+
+
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / 'static'
 ]
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, "assets/")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 
 
 # Default primary key field type

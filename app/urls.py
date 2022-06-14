@@ -26,7 +26,6 @@ urlpatterns = [
     path('popular_products', views.popular_products, name='popular'),
     path('television', views.television, name='telvision'),
     path('tel_detail/<slug:slug>', views.television_detail)
-
 ]
 
 
